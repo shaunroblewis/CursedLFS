@@ -39,5 +39,5 @@ Proceed as per the book until Linux API headers.
 Currently, we will eventually be building and using a WSL2 kernel from https://github.com/microsoft/WSL2-Linux-Kernel/releases. There are only a few specific kernel releases available at time of writing, and the newest is 6.1.21.2 from May 2023. We might make an attempt at porting the MS changes to the LFS book kernel at a later date, but for now, fetch and then install the API headers from the linux-msft-wsl tarball matching the latest version.
 
 # Chapters 6,7,8
-Proceed exactly as per the book, taking care to appened "sudo" as required where instructions are to run command as root, up until chrooted in to the new LFS install.
+Proceed exactly as per the book (skipping instructions for GRUB), taking care to appened "sudo" as required where instructions are to run command as root, up until chrooted in to the new LFS install.
 

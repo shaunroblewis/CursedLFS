@@ -34,4 +34,7 @@ mkfs -v -t ext4 /dev/<xxx>
 ...etc
 # 3. Packages and Patches.
 Proceed as per the book. On Ubuntu, remember to prefix the commands with sudo as required. You can remove GRUB and the kernel package from the wget list as they are unnessacary.  
+# 4. Compiling cross-toolchain
+Proceed as per the book until Linux API headers.
+Currently, we will eventually be building and using a WSL2 kernel from https://github.com/microsoft/WSL2-Linux-Kernel/releases. There are only a few specific kernel releases available at time of writing, and the newest is 6.1.21.2 from May 2023. We might make an attempt at porting the MS changes to the LFS book kernel at a later date, but for now, fetch and then install the API headers from the linux-msft-wsl tarball matching the latest version.
 

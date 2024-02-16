@@ -41,3 +41,9 @@ Currently, we will eventually be building and using a WSL2 kernel from https://g
 # Chapters 6,7,8
 Proceed exactly as per the book (skipping instructions for GRUB), taking care to appened "sudo" as required where instructions are to run command as root, up until chrooted in to the new LFS install.
 
+# Chapter 9.
+We will not use systemd-networkd for network configuration, so use the "note" commands, and ignore the remainder of "General Network Configuration" until "configuring the system hostname". I prefer to deal with locale issues with localectl after bootup, so I ignore the remainder of the instructions except creating /etc/profile, /etc/inputrc
+ and /etc/shells
+
+ # Chapter 10.
+ Ignore the book instructions. We will initially 'boot' our WSL distro using the inbuilt MS-provided kernel, before building our own version of that kernel from source 

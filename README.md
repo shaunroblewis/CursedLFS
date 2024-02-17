@@ -48,25 +48,35 @@ and /etc/shells
 # Chapter 10.
 Ignore the book instructions. We will initially 'boot' our WSL distro using the inbuilt MS-provided kernel, before building our own version of that kernel from source. Exit the chroot environment.
 
-1 .Create a file at /etc/wsl.conf with the following contents:
+1. If you haven't already, remember to set a root passwd inside the chroot environment with ```passwd```
+
+2 .Create a file at /etc/wsl.conf with the following contents:
 ```
 [boot]
 systemd=true
 ```
 
-2.  Create a tarball of the $LFS rootfs. 
+3.  Create a tarball of the $LFS rootfs. 
 ```
 sudo tar cpjf ~/rootfs.tar.gz -C /mnt/lfs .
 ```
 
-3. Next, from WINDOWS, import the rootfs as a custom WSL distro
+4. Next, from WINDOWS, import the rootfs as a custom WSL distro
 ```
 wsl --import LFS C:\Users\<user>\AppData\Local\WSL\LFS "E:\rootfs.tar.gz"
 ```
 
-4. LFS can now be booted (using the default WSL kernel) by issuing the command
+5. LFS can now be booted (using the default WSL kernel) by issuing the command
 ```
 wsl -d LFS
 ```
+
+# Next steps.
+I follow the instructions from the BLFS book for creating the Bash start up scripts, create a new user, and install wget, make-ca, and sudo from the BLFS book. You can set the default user to your new user by appending the following to /etc/wsl.conf
+```
+[user]
+default=username
+```
+At this point, everything running inside you LFS WSL2 distro has been compiled from source with the exception of the kernel image. Note that the kernel image is shared by all WSL2 distro's. If you want to compile your own kernel image to usse across all installed WSL2 distros, the instructions can be found at KERNEL.md.
 
 

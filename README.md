@@ -2,7 +2,7 @@
 Instructions for building LFS on top of WSL2
 
 # 1. Introduction
-The basic outline is to follow the LFS book, but build the inital LFS cross-chain and temp tools on a already existing WSL distro, but inside a seperate virtual disk (VHD). We will then create a tarball of the root of that VHD and import it as a custom WSL distro before installing the rest of the system (almost) as per the book. We won't need a bootloader, and the instructions for building the Kernel will be different. It will requires patches from MS, and will likley  be a diffrenet version from the LFS book. The kernel CAN be built from source using our LFS tools, but the resulting kernel is then shared across all WSL distros. 
+The basic outline is to follow the LFS book, but build the inital LFS cross-chain and temp tools on a already existing WSL distro, but inside a seperate virtual disk (VHD). We will then create a tarball of the root of that VHD and import it as a custom WSL distro. We won't need a bootloader, and the instructions for building the Kernel will be different. It will requires patches from MS, and will likley be a different version from the LFS book. The kernel CAN be built from source using our LFS tools, but the resulting kernel is then shared across all WSL distros. 
 
 # 2. Preparing the host system
 ## Host System Requirements
@@ -43,7 +43,18 @@ Proceed exactly as per the book (skipping instructions for GRUB), taking care to
 
 # Chapter 9.
 We will not use systemd-networkd for network configuration, so use the "note" commands, and ignore the remainder of "General Network Configuration" until "configuring the system hostname". I prefer to deal with locale issues with localectl after bootup, so I ignore the remainder of the instructions except creating /etc/profile, /etc/inputrc
- and /etc/shells
+and /etc/shells
 
- # Chapter 10.
- Ignore the book instructions. We will initially 'boot' our WSL distro using the inbuilt MS-provided kernel, before building our own version of that kernel from source 
+# Chapter 10.
+Ignore the book instructions. We will initially 'boot' our WSL distro using the inbuilt MS-provided kernel, before building our own version of that kernel from source. Exit the chroot environment.
+
+Create a tarball of the $LFS rootfs. 
+```
+cd /mnt/e
+sudo tar -zcpf rootfs.tar.gz $LFS/*
+```
+
+Next, from WINDOWS, import the rootfs as a custom WSL distro
+```
+wsl --import LFS C:\Users\<user>\AppData\Local\WSL\LFS "E:\rootfs.tar.gz"
+```

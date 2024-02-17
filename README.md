@@ -48,13 +48,25 @@ and /etc/shells
 # Chapter 10.
 Ignore the book instructions. We will initially 'boot' our WSL distro using the inbuilt MS-provided kernel, before building our own version of that kernel from source. Exit the chroot environment.
 
-Create a tarball of the $LFS rootfs. 
+1 .Create a file at /etc/wsl.conf with the following contents:
 ```
-cd /mnt/e
-sudo tar -zcpf rootfs.tar.gz $LFS/*
+[boot]
+systemd=true
 ```
 
-Next, from WINDOWS, import the rootfs as a custom WSL distro
+2.  Create a tarball of the $LFS rootfs. 
+```
+sudo tar cpjf ~/rootfs.tar.gz -C /mnt/lfs .
+```
+
+3. Next, from WINDOWS, import the rootfs as a custom WSL distro
 ```
 wsl --import LFS C:\Users\<user>\AppData\Local\WSL\LFS "E:\rootfs.tar.gz"
 ```
+
+4. LFS can now be booted (using the default WSL kernel) by issuing the command
+```
+wsl -d LFS
+```
+
+

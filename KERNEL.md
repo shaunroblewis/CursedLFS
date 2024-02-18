@@ -1,15 +1,14 @@
 # Kernel instructions
 
-1. Install cmake as per BLFS instructions.
+1. Install git and cmake as per BLFS instructions.
 
 2. Reinstall elf-utils as per LFS book, but ignore the instructions to only build libelf. Execute "make install" in place of "make -C libelf install"
   
-3. Install pahole. This is not part of the BLFS book. Latest version currently at time of writing is at http://fedorapeople.org/~acme/dwarves/dwarves-1.25.tar.xz.
-Location of tarball and build instructions cribbed from the gentoo ebuild - check root/dev-util/pahole for updates. 
+3. Install pahole. This is not part of the BLFS book. Latest version currently at time of writing is at https://git.kernel.org/pub/scm/devel/pahole/pahole.git/tag/?=v1.25
 ```
 mkdir build &&
 cd build &&
-cmake -D__LIB=/usr/lib -DCMAKE_INSTALL_PREFIX=/usr .. &&
+cmake -D__LIB=lib -DCMAKE_INSTALL_PREFIX=/usr .. &&
 make
 ```
 As root:

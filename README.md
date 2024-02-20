@@ -9,7 +9,7 @@ The basic outline is to follow the LFS book, but build the inital LFS cross-chai
 - Install WSL2 and Base distro (Tested with Ubuntu 22.04.3 LTS from MS Store)
 - Install extra required packages:
 ```
-sudo apt-get install build-essentials bison texinfo
+sudo apt-get install build-essential bison texinfo
 ```
 
 - Reconfigure /bin/sh to point to bash instead of the default dash:

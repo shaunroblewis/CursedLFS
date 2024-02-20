@@ -2,7 +2,7 @@
 Instructions for building LFS on top of WSL2
 
 # 1. Introduction
-The basic outline is to follow the LFS book, but build the initial LFS cross-chain and temp tools on a already existing WSL distro, but inside a seperate virtual disk (VHD). We will then create a tarball of the root of that VHD and import it as a custom WSL distro. We won't need a bootloader, and the instructions for building the Kernel will be different. It will requires patches from MS, and will likely be a different version from the LFS book. The kernel CAN be built from source using our LFS tools, but the resulting kernel is then shared across all WSL distros. 
+The basic outline is to follow the LFS book, specifically the Systemd version, but build the initial LFS cross-chain and temporary tools on an already existing WSL distro, within a separate virtual disk (VHD). We will then create a tarball of the root of that VHD and import it as a custom WSL distro. Notably, we won’t need a bootloader, and the instructions for building the kernel will differ. The kernel will require patches from Microsoft, and it will likely be a different version from the LFS book. Although the kernel can be built from source using our LFS tools, the resulting kernel is shared across all WSL distros.
 
 # 2. Preparing the host system
 ## Host System Requirements
@@ -25,7 +25,7 @@ sudo mv /bin/sh.bash /bin/sh
  ```
 **In Windows**, mount the new VHD into WSL.
 ```
-wsl --mount --vhd C:\Users\shaun\WSL2\base_lfs.vhd
+wsl --mount --vhd C:\Users\<user>\WSL2\base_lfs.vhd
 ```
 Since there is not a filesystem yet, WSL will complain "The disk was attached but failed to mount: Operation not permitted.". This is expected. Check where the disk has been attached with `lsblk`. In my case, it was /dev/sde. Back inside the WSL distro, proceed as per "Creating a File System on the Partition", onwards.
 ```

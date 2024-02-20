@@ -77,6 +77,6 @@ I follow the instructions from the BLFS book for creating the Bash start up scri
 [user]
 default=username
 ```
-At this point, everything running inside you LFS WSL2 distro has been compiled from source with the exception of the kernel image. Note that the kernel image is shared by all WSL2 distro's. If you want to compile your own kernel image to usse across all installed WSL2 distros, the instructions can be found at KERNEL.md.
+At this point, everything running inside your LFS WSL2 distro has been compiled from source with the exception of the kernel image. Note that the kernel image is shared by all WSL2 distrobutions. If you want to compile your own kernel image to use across all installed WSL2 distros, the instructions can be found at KERNEL.md.
 
 
